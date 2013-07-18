@@ -1,0 +1,93 @@
+<section>
+	<!-- Introduction -->
+	<section>
+		<h2>ControlP5</h2>
+		<p>A GUI (graphical user interface) library for processing.</p>
+		<p>Link: <a href="http://www.sojamo.de/libraries/controlP5">http://www.sojamo.de/libraries/controlP5</a></p>
+	</section>
+
+	<!-- Install -->
+	<section>
+		<h2>Install</h2>
+		<img src="images/ctlp5_install.png">
+	</section>
+
+	<!-- CP5 Setup -->
+	<section>
+		<h2>Setup ControlP5</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+ControlP5 cp5;
+
+void setup() {
+    cp5 = new ControlP5(this);
+}
+		</code></pre>
+	</section>
+
+	<!-- Controls: Text Label -->
+	<section>
+		<h2>Add Controls: Text Label</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+cp5.addTextlabel("color_label")
+   .setText("Change Color:" )
+   .setPosition(10, 10)
+   .setColorValue(0x000000)
+   .setFont(createFont("Georgia",12))
+   ;
+		</code></pre>
+	</section>
+
+	<!-- Controls: Button -->
+	<section>
+		<h2>Add Controls: Button</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+cp5.addButton("Red")
+   .setPosition(10, 25)
+   .setSize(100, 19)
+   ;
+		</code></pre>
+		<p>Callback (I): </p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+public void controlEvent(ControlEvent event) {
+    if (event.getName().equals("Red")) {
+        // Do something here:
+    }
+}
+		</code></pre>
+		<p>Callback (II): </p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+void Red() {
+    // Do something here:
+}
+		</code></pre>
+	</section>
+
+	<!-- Controls: Slider -->
+	<section>
+		<h2>Add Controls: Slider</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+cp5.addSlider("RotateY")
+     .setPosition(10,240)
+     .setSize(200,15)
+     .setRange(-180,180)
+     .setValue(0)
+     ;
+		</code></pre>
+		<p>Callback (I):</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+public void controlEvent(ControlEvent event) {
+    if (event.getName().equals("RotateY")) {
+        // Get the slider value:
+        float rotateVal = event.controller().value():
+    }
+}
+		</code></pre>
+		<p>Callback (II): </p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+void RotateY(float val) {
+    // Do something here:
+}
+		</code></pre>
+	</section>
+
+</section>

@@ -1,0 +1,139 @@
+<section>
+	<section>
+		<h2>Arduino</h2>
+		<img src='images/Arduino_Uno_Angle.jpg' width="450" height="450">
+	</section>
+
+	<!-- Circuit -->
+	<section>
+		<h2>Testing Circuit</h2>
+		<img src='images/circuit.png' width="700">
+	</section>
+
+	<!-- Setup -->
+	<section>
+		<h2>Serial Setup</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+import processing.serial.*;  // Import the serial library
+Serial port;
+
+void setup() {
+  // List all the available serial ports:
+  println(Serial.list());
+  port = new Serial(this, Serial.list()[0], 9600);
+}
+		</code></pre>	
+	</section>
+
+	<!-- Serial Communication (input) --> 
+	<section>
+		<h2>Serial Communication (input)</h2>
+		<p>Processing</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+void draw() {
+  while(port.available() > 0) {
+    int data = port.read();
+    println(data);
+    // Do something
+  }
+}
+		</code></pre>
+		<p>Arduino</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+void loop() {
+	int switchState = digitalRead(switch);
+
+	if (switchState == HIGH) {
+	    Serial.write(1);
+	}
+	else {
+	    Serial.write(0);
+	}
+}
+		</code></pre>
+	</section>
+
+	<!-- Serial Communication (output) -->
+	<section>
+		<h2>Serial Communication (output)</h2>
+		<p>Processing</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+if (switchVal == true) {
+    port.write(1);
+  }
+  else {
+    port.write(0);
+  }
+}	
+		</code></pre>
+
+		<p>Arduino</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+if (Serial.available() > 0) {
+    readData = Serial.read();
+}
+ 
+if (readData == 1) {
+  digitalWrite(led, HIGH);
+  delay(1000);
+  digitalWrite(led, LOW);
+  delay(1000);
+}
+else {
+  digitalWrite(led, LOW);
+}			
+		</code></pre>
+	</section>
+
+	<!-- Arduino Library -->
+	<section>
+		<h2>Arduino Library</h2>
+		<a href="http://playground.arduino.cc/interfacing/processing">http://playground.arduino.cc/interfacing/processing</a>
+		<p>*Note: Can only run on <b>v1.5.1</b></p>
+	</section>
+
+	<!-- Arduino Lib: Setup -->
+	<section>
+		<h2>Arduino Lib: Setup</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+/* import the required libs */
+import processing.serial.*;
+import cc.arduino.*;
+
+Arduino arduino;
+int     ledPin = 13;
+int     swtPin = 4;
+
+void setup() {
+  // Setup the Arduino:
+  println(Arduino.list());
+  arduino = new Arduino(this, Arduino.list()[0], 57600);
+  
+  // Setup the PINs:
+  arduino.pinMode(ledPin, Arduino.OUTPUT);
+  arduino.pinMode(swtPin, Arduino.INPUT);  
+}
+		</code></pre>	
+	</section>
+
+	<!-- Arduino Lib: Controls -->
+	<section>
+		<h2>Arduino Lib: Controls</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Digital Read:
+int swtState = arduino.digitalRead(swtPin);
+
+if (swtState == Arduino.HIGH) {
+  // Digital Write:
+  arduino.digitalWrite(ledPin, Arduino.HIGH);
+  delay(1000);
+  arduino.digitalWrite(ledPin, Arduino.LOW);
+  delay(1000);
+}
+else {
+  arduino.digitalWrite(ledPin, Arduino.LOW);
+}
+		</code></pre>
+	</section>
+
+</section>

@@ -1,0 +1,132 @@
+<section>
+	
+	<!-- Draw Functions -->
+	<section>
+		<h2>Draw Functions</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+background(255);             // Set the background to white color
+noStroke();                  // Set stroke (no stroke)
+fill(255, 200, 0);           // Set the filled color
+rect(posX, 40, 50, 50, 8);   // Draw a rect
+		</code></pre>
+	</section>
+
+	<!-- Image -->
+	<section>
+		<h2>Image</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+PImage testImage;
+// NOTE: source should be placed under ./data
+testImage = loadImage("test.jpeg");    
+
+size(200, 200);
+background(255);
+
+// image(PImage, posX, posY, width, height)
+image(testImage, 10, 10, 190, 190);   		
+		</code></pre>
+	</section>
+
+	<!-- Setup & Draw -->
+	<section>
+		<h2>Setup & Draw</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+void setup() {
+// Init stuff here:
+}
+
+void draw() {
+// Loop Loop Loop 
+}
+		</code></pre>
+	</section>
+
+	<!-- Mouse Event -->
+	<section>
+		<h2>Mouse Event</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// mouse position: (mouseX, mouseY)
+void mousePressed()  {} 
+void mouseReleased() {}
+void mouseDragged()  {}
+		</code></pre>
+	</section>
+
+	<!-- Key Event -->
+	<section>
+		<h2>Key Event</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+public void keyPressed() {
+	switch (keyCode) {
+		case RIGHT:
+			// RIGHT key pressed
+			break;
+
+		case LEFT:
+			// LEFT key pressed
+			break;
+
+		case UP:
+			// UP key pressed
+			break;
+
+		case DOWN:
+			// DOWN key pressed
+			break;
+
+		default:
+			println(key);
+			break;
+	}		
+}
+		</code></pre>		
+	</section>
+
+	<!-- 3D Basics -->
+	<section>
+		<h2>3D: Basics</h2>
+		<p>Coordinate</p>
+		<img src="images/3d_coor.png">
+		<p>Rendering Mode</p>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Using P3D instead of the default JAVA2D	
+size(400, 400, P3D)		
+		</code></pre>
+
+	</section>
+
+	<!-- 3D: obejct -->
+	<section>
+		<h2>3D: Object</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+// Box
+box(size);
+box(w_x, w_y, w_z);
+
+// Sphere
+sphere(r);
+sphereDetail(numOfVertex); // min value = 3;
+
+		</code></pre>
+	</section>
+
+	<!-- 3D: Transform -->
+	<section>
+		<h2>3D: Transform</h2>
+		<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+translate(150, 150, 100);
+pushMatrix();  // Push the current matrix into the stack
+
+noFill();
+rotateY(PI/1.5);
+rotateX(map(mouseY, 0, height, PI, -PI));
+box(50);
+
+popMatrix();  // Pop out the previous (before rotation) matrix
+rotateY(map(mouseX, 0, width, -PI, PI));
+fill(255, 0, 0);
+box(30);
+		</code></pre>
+	</section>
+
+</section>
